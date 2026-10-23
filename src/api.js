@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-const API_KEY = import.meta.env.VITE_API_KEY || 'my_production_secret_key_12345_change_this';
+const API_KEY = import.meta.env.VITE_API_KEY || 'your-api-key';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -9,6 +9,7 @@ const apiClient = axios.create({
     'X-API-Key': API_KEY,
     'Content-Type': 'application/json',
   },
+  timeout: 300000,  // 5 minutes instead of default 30 seconds
 });
 
 export const uploadPDFs = async (files) => {
@@ -17,6 +18,7 @@ export const uploadPDFs = async (files) => {
   
   return apiClient.post('/upload', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
+    timeout: 300000,  // 5 minutes
   });
 };
 
