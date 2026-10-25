@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import './App.css';
 import { uploadPDFs, queryRAG, checkHealth } from './api';
+import About from './About';
 
 function TypingIndicator() {
   return (
@@ -62,6 +63,7 @@ function App() {
   const [question, setQuestion] = useState('');
   const [typing, setTyping] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
   const fileInputRef = useRef(null);
   const messagesEndRef = useRef(null);
 
@@ -144,16 +146,42 @@ function App() {
     'What are the main conclusions?',
   ];
 
+  // Show About page if requested
+  if (showAbout) {
+    return (
+      <div>
+        <About onClose={() => setShowAbout(false)} />
+      </div>
+    );
+  }
+
   return (
     <div className="shell">
       <header className="topbar">
-        <div className="brand">
+        <div className="brand" onClick={() => setShowAbout(false)} style={{ cursor: 'pointer' }}>
           <span className="brand-icon">⬡</span>
-          <span className="brand-name">DocMind</span>
+          <span className="brand-name">CiteCraft</span>
         </div>
-        <div className={`status-pill ${indexReady ? 'ready' : 'idle'}`}>
-          <span className="status-dot" />
-          {indexReady ? 'Index ready' : 'No document'}
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+          <button 
+            onClick={() => setShowAbout(true)}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-2)',
+              fontSize: '13px',
+              cursor: 'pointer',
+              transition: 'color 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.color = 'var(--text)'}
+            onMouseLeave={(e) => e.target.style.color = 'var(--text-2)'}
+          >
+            About
+          </button>
+          <div className={`status-pill ${indexReady ? 'ready' : 'idle'}`}>
+            <span className="status-dot" />
+            {indexReady ? 'Index ready' : 'No document'}
+          </div>
         </div>
       </header>
 
@@ -262,6 +290,25 @@ function App() {
               {typing ? <span className="spinner small" /> : '↑'}
             </button>
           </form>
+
+          <footer style={{
+            borderTop: '1px solid var(--border)',
+            padding: '12px 40px',
+            fontSize: '11px',
+            color: 'var(--text-3)',
+            textAlign: 'center',
+            background: 'var(--surface)'
+          }}>
+            © 2026 Abdullah Khalid. All rights reserved. | 
+            <a 
+              href="https://github.com/Abdullahkhalid11" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--accent)', textDecoration: 'none', marginLeft: '4px' }}
+            >
+              GitHub
+            </a>
+          </footer>
         </section>
       </main>
     </div>

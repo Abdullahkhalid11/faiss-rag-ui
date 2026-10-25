@@ -1,0 +1,91 @@
+.about-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  padding: 60px 20px;
+}
+
+.about-container {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.about-page h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.tagline {
+  font-size: 16px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.about-section {
+  margin-bottom: 32px;
+}
+
+.about-section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.about-section p {
+  color: var(--text-2);
+  margin-bottom: 12px;
+}
+
+.about-section ol, .about-section ul {
+  color: var(--text-2);
+  padding-left: 24px;
+}
+
+.about-section li {
+  margin-bottom: 8px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.skill {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.about-page a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.about-page a:hover {
+  text-decoration: underline;
+}
+
+.about-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.about-footer p {
+  margin-bottom: 8px;
+}
